@@ -3,6 +3,7 @@ import {nanoid} from 'nanoid'
 import eventPath from '../../assets/event.png'
 import birthPath from '../../assets/birth.png'
 import deathPath from '../../assets/grave.png'
+import logoPath from '../../assets/magnifying-glass.png'
 
 const GetData = ( {month,day} ) => {
     const [stat, setStat] = useState(true)
@@ -14,7 +15,7 @@ const GetData = ( {month,day} ) => {
         const timer = setTimeout(() => {
             setStat(true)
             
-        },4000)
+        },5000)
     },[day])
     const fetchEvent = (m,d) => {
         fetch(`https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${m}/${d}`)
@@ -46,7 +47,12 @@ const GetData = ( {month,day} ) => {
             <div className="result">
                 <div className="inner-box">
                     <div className="title">Events</div>
-                    {!stat && <img className="pending-pic" src={eventPath} width="120px"/>}
+                    {!stat && (
+                        <div className="loading-wrapper">
+                            <img className="pending-pic" src={eventPath} width="120px"/>
+                            <img className="mag-loading" src={logoPath} width="80px"/>
+                        </div>
+                    )}
                     {stat && (
                         <ul>
                             {events.map((item) => (
@@ -57,7 +63,12 @@ const GetData = ( {month,day} ) => {
                 </div>
                 <div className="inner-box">
                     <div className="title">Births</div>
-                    {!stat && <img className="pending-pic" src={birthPath} width="120px"/>}
+                    {!stat && (
+                        <div className="loading-wrapper">
+                            <img className="pending-pic" src={birthPath} width="120px"/>
+                            <img className="mag-loading" src={logoPath} width="80px"/>
+                        </div>
+                    )}
                     {stat && (
                         <ul>
                             {births.map((item) => (
@@ -68,7 +79,12 @@ const GetData = ( {month,day} ) => {
                 </div>
                 <div className="inner-box">
                     <div className="title">Deaths</div>
-                    {!stat && <img className="pending-pic" src={deathPath} width="120px"/>}
+                    {!stat && (
+                        <div className="loading-wrapper">
+                            <img className="pending-pic" src={deathPath} width="120px"/>
+                            <img className="mag-loading" src={logoPath} width="80px"/>
+                        </div>
+                    )}
                     {stat && (
                         <ul>
                             {deaths.map((item) => (
