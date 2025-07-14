@@ -1,3 +1,8 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+.result {
+  display: flex;
+  height: 300px;
+  border: 1px solid black;
+}
