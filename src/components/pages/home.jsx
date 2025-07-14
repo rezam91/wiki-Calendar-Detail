@@ -20,13 +20,14 @@ const Home = () => {
     
     return (
         <>
-            <div>Month:<span>{" " +currentDay.format("MMMM")}</span></div>
-            <div>Day:<span>{" " + d}</span></div>
-            <div>
-                <button onClick={previousDay}>Previous Day</button>
-                <button onClick={nextDay}>Next Day</button>
+            <div className='date-box'>
+                <div className='month-title'>{currentDay.format("MMMM")}</div>
+                <div className='day-title'>{d}</div>
             </div>
-            <div>Home</div>
+            <div className='button-wrapper'>
+                <button className='button-day' onClick={previousDay}>Previous Day</button>
+                <button className='button-day' onClick={nextDay}>Next Day</button>
+            </div>
             <GetData month={m} day={d} />
 
         </>
